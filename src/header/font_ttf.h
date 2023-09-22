@@ -1,22 +1,27 @@
+#ifndef FONT_TTF_H
+#define FONT_TTF_H
+
 #include <stdio.h>
+#include "TTF_Types.h"
 
 class FontTTF
 {
-    static void printShortFrac(void* pos);
-    static void printFWord(void* pos);
-    static void printUFWord(void* pos);
-    static void printF2Dot14(void* pos);
-    static void printLongDataTime(void* pos);
+    static void printShortFrac(unsigned char* pos);
+    static void printF2Dot14(unsigned char* pos);
+    static void printLongDataTime(unsigned char* pos);
 
     public:
-    static void printFixed(void* pos, char* name, char* detail)
-    {
-        printf("| %s | ", name);
-        unsigned char* ptr = (unsigned char*)pos;
-        unsigned int high = ptr[0] * 256 + ptr[1];
-        unsigned int low = ptr[2] * 256 + ptr[3];
-        double tmp = (double)high + (double)low / 65536;
-        printf("%f", tmp);
-        printf(" | %s |", detail);
-    }
+    static void printField(unsigned char* pos, int ttf_type, const char* name, const char* detail);
+
+    static void printFixed(unsigned char* pos);
+    static void printU2BE(unsigned char* pos);
+    static void printU4BE(unsigned char* pos);
+    static void printTag(unsigned char* pos);
+
+    static unsigned short getFixedMajor(unsigned char* pos);
+    static unsigned short getFixedMinor(unsigned char* pos);
+    static unsigned short getU2BE(unsigned char* pos);
+    static unsigned int getU4BE(unsigned char* pos);
 };
+
+#endif

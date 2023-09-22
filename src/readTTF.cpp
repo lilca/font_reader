@@ -1,13 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int processing();
-FILE* openFile(const char* filename);
-void printHex(unsigned char* pos, int len);
-void printChar(unsigned char* pos, int len);
+#include "header/readTTF.h"
 
-    int fileSize;
-    unsigned char* fileBuffer;
 
 int main (int argc, char** argv)
 {
@@ -71,8 +66,19 @@ int main (int argc, char** argv)
 int processing()
 {
 //    int pos = 0;
-    printHex(fileBuffer, 28);
-    printChar(fileBuffer, 28);
+    unsigned char* pos = fileBuffer;
+    offsetTable.set(pos);
+    offsetTable.print();
+    pos = offsetTable.seekPointer(pos);
+
+    for(int idx=0; idx<offsetTable.numberOfTables; idx++)
+    {
+        directoryTable.set(pos);
+        directoryTable.print();
+        pos = directoryTable.seekPointer(pos);
+    }
+    printHex(pos, 16);
+    printChar(pos, 16);
     return 0;
 }
 
