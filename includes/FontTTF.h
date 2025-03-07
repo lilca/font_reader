@@ -2,7 +2,7 @@
 #define FONT_TTF_H
 
 #include <stdio.h>
-#include "TTF_Types.h"
+#include <TTF_Types.h>
 
 class FontTTF
 {

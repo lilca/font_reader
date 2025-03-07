@@ -1,5 +1,5 @@
 
-#include "header/OffsetTable.h"
+#include <OffsetTable.h>
 
     void OffsetTable::set(unsigned char* pos)
     {

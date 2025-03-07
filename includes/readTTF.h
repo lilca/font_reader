@@ -3,9 +3,9 @@
 
 #include <stdio.h>
 
-#include "font_ttf.h"
-#include "OffsetTable.h"
-#include "DirectoryTable.h"
+#include <FontTTF.h>
+#include <OffsetTable.h>
+#include <DirectoryTable.h>
 
 void printHex(unsigned char* pos, int len);
 void printChar(unsigned char* pos, int len);
@@ -15,8 +15,11 @@ FILE* openFile(const char* filename);
 int fileSize;
 unsigned char* fileBuffer;
 
+// 最初のオフセットテーブル
 OffsetTable offsetTable;
+// チャンクデータの変数
 DirectoryTable directoryTable;
+// なんだっけ？
 DirectoryTable* dTables;
 
 #endif

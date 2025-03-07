@@ -1,14 +1,18 @@
 
-#include "header/DirectoryTable.h"
+#include <DirectoryTable.h>
 
     void DirectoryTable::set(unsigned char* pos)
     {
+        // タグ
         tag[0] = pos[0];
         tag[1] = pos[1];
         tag[2] = pos[2];
         tag[3] = pos[3];
+        // チェックサム
         cheksum = FontTTF::getU4BE(pos+4);
+        // オフセット
         offset = FontTTF::getU4BE(pos+8);
+        // 長さ
         length = FontTTF::getU4BE(pos+12);
     }
 

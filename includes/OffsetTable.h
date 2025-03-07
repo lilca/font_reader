@@ -1,8 +1,8 @@
 #ifndef OFFSET_TABLE_H
 #define OFFSET_TABLE_H
 
-#include "font_ttf.h"
-#include "TTF_Types.h"
+#include <FontTTF.h>
+#include <TTF_Types.h>
 
 class OffsetTable
 {
